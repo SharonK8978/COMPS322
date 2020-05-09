@@ -3,32 +3,42 @@
 
 #This is a Makefile for my lab6 assignment. 
 
-EXECUTABLES=lab6
 EXECUTABLES1=spiritd
 EXECUTABLES2=moles
-SRC=lab6.c
-OBJ=lab6.o 
+
+SRC1=spiritd.c
+SRC2= moles.c
+
+OBJ1=spiritd.o 
+OBJ2=moles.o
 
 CC=gcc
 CFLAGS=-g
 
-all:$(EXECUTABLES)
+all:$(EXECUTABLES1)
 
-$(EXECUTABLES): $(SRC)
-	$(CC) $(CFLAGS) -c $(SRC) -Wall -Wextra
-	$(CC) $(CFLAGS) -o $@ $(OBJ)
+$(EXECUTABLES1): $(SRC1)
+	$(CC) $(CFLAGS) -c $(SRC1) -Wall -Wextra
+	$(CC) $(CFLAGS) -o $@ $(OBJ1)
+
+$(EXECUTABLES2)
+
+$(EXECUTABLES2): $(SRC2)
+	$(CC) $(CFLAGS) -c $(SRC2) -Wall -Wextra
+	$(CC) $(CFLAGS) -o $@ $(OBJ2)
 
 spiritd:$(EXECUTABLES1)
 
-$(EXECUTABLES1): $(SRC)
-	$(CC) $(CFLAGS) -c $(SRC) -Wall -Wextra
-	$(CC) $(CFLAGS) -o $@ $(OBJ)
+$(EXECUTABLES1): $(SRC1)
+	$(CC) $(CFLAGS) -c $(SRC1) -Wall -Wextra
+	$(CC) $(CFLAGS) -o $@ $(OBJ1)
 
 moles:$(EXECUTABLES2)
 
-$(EXECUTABLES2): $(SRC)
-	$(CC) $(CFLAGS) -c $(SRC) -Wall -Wextra
-	$(CC) $(CFLAGS) -o $@ $(OBJ)
+$(EXECUTABLES2): $(SRC2)
+	$(CC) $(CFLAGS) -c $(SRC2) -Wall -Wextra
+	$(CC) $(CFLAGS) -o $@ $(OBJ2)
 
 clean:
-	rm -f $(EXECUTABLES) $(OBJ) *~
+	rm -f $(EXECUTABLES1) $(OBJ1) *~
+	rm -f $(EXECUTABLES2) $(OBJ2) *~
